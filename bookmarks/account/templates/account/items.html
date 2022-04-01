@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Items</h1>
+<!--<p>Welcome to Items pages.</p>-->
+<a href="{% url "new_items" %}"><input type="button" value="Add new_items +"></a>
+<div>
+    <div><label><input type="radio" name="r_name" value="Name">Name</label></div>
+    <div><label><input type="button" name="r_name" value="Type"></label></div>
+    <div><label><input type="radio" name="r_name" value="Name">Name</label></div>
+    <div><label><input type="button" name="r_name" value="Type"></label></div>
+</div>
+
+{% endblock %}

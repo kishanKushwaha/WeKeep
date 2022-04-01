@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="{% static "css/base.css" %}" rel="stylesheet">
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>services</h1>
+<!--<p>Welcome to services.</p>-->
+
+<div class="btn-group">
+    <div><label><input type="radio" name="r_name" value="Name">Name</label></div>
+    <input type="button" value="Rate" >
+    <input type="button" value="Contact">
+    <input type="button" value="Type">
+    <div><label><input type="radio" name="r_name" value="Name">Name</label></div>
+    <input type="button" value="Rate">
+    <input type="button" value="Contact">
+    <input type="button" value="Type">
+</div>
+
+
+
+
+{% endblock %}
+

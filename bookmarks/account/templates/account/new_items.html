@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Add New Items</h1>
+<!--<p>Welcome to New Items Page.</p>-->
+{{ new_form.as_p }}
+{% csrf_token %}
+<p><input type="submit" value="Submit"></p>
+{% endblock %}
