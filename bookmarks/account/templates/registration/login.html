@@ -10,7 +10,9 @@
       Please try again.
     </p>
   {% else %}
-    <p>Please, use the following form to log-in. If you don't have an account <a href="{% url "register" %}">register here</a></p>
+    <p>Please, use the following form to log-in. If you don't have an account <br>
+      <a href="{% url "register" %}">Signup As Service Personnel</a><br>
+      <a href="{% url "register" %}">Signup As User</a></p>
   {% endif %}
   <div class="login-form">
     <form action="{% url 'login' %}" method="post">
@@ -18,8 +20,8 @@
       {% csrf_token %}
       <input type="hidden" name="next" value="{{ next }}" />
       <p>
-        <input type="submit" value="Log in as User">
-        <input type="submit" value="Log in as Service Personnel">
+        <input type="submit" value="Login">
+
 
 
     </p>

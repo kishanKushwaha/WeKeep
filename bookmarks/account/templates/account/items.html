@@ -1,16 +1,54 @@
 {% extends "base.html" %}
+{% load static %}
+
 
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h1>Items</h1>
+<h1 xmlns="http://www.w3.org/1999/html">Products</h1>
 <!--<p>Welcome to Items pages.</p>-->
 <a href="{% url "new_items" %}"><input type="button" value="Add new_items +"></a>
-<div>
-    <div><label><input type="radio" name="r_name" value="Name">Name</label></div>
-    <div><label><input type="button" name="r_name" value="Type"></label></div>
-    <div><label><input type="radio" name="r_name" value="Name">Name</label></div>
-    <div><label><input type="button" name="r_name" value="Type"></label></div>
-</div>
+<br>
+<br>
+<br>
+<div class="display_table" style="border-bottom-right-radius:20px; padding-left:20px; padding-right:20px; padding-bottom:20px;">
+    <table class='table' style=" font-size:16px; text-align:center; width 95%; margin: auto;">
+            <thead>
+              <tr style="background:#8FE138; color:#E1171E;">
+                <th>Count</th>
+                <th>item_name</th>
+                <th>price</th>
+                <th>brand</th>
+                <th>model</th>
+                <th>type</th>
+                <th>date</th>
+                <th>invoice_image</th>
+                <th>Warranty</th>
+                <th>duration_warranty</th>
+                <th>Is_Alert_Needed</th>
+                <th>Insurance</th>
+                <th>duration_insurance</th>
+              </tr>
+            </thead>
 
+        {% for n in productData %}
+        <tr style="background:#45B6EB ; color:#0909E8;">
+            <td>{{forloop.counter}}</td>
+            <td>{{ n.item_name}}</td>
+            <td>{{ n.price}}</td>
+            <td>{{ n.brand}}</td>
+            <td>{{ n.model}}</td>
+            <td>{{ n.type }}</td>
+            <td>{{ n.date }}</td>
+            <td>{{ n.invoice_image }}</td>
+            <td>{{ n.Warranty }}</td>
+            <td>{{ n.duration_warranty }}</td>
+            <td>{{ n.Is_Alert_Needed }}</td>
+            <td>{{ n.Insurance }}</td>
+            <td>{{ n.duration_insurance }}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

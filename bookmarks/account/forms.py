@@ -15,8 +15,6 @@ class UserRegistrationForm(forms.ModelForm):
     pincode=forms.IntegerField(label='Pincode')
     password=forms.CharField(label='Password',widget=forms.PasswordInput)
     password2=forms.CharField(label='Repeat Password',widget=forms.PasswordInput)
-    Signup_as_service_personnel=forms.BooleanField()
-    Signup_as_Employeed=forms.BooleanField()
 
 
     class Meta:
@@ -30,13 +28,17 @@ class UserRegistrationForm(forms.ModelForm):
         return cd['password2']
 
 class add_new_items(forms.Form):
-    item_name = forms.CharField(label='Item Name', max_length=50)
+    item_name = forms.CharField(label='Product Name', max_length=50)
     price = forms.FloatField(label='Price')
-    brand = forms.CharField(label='Model',max_length=50)
+    brand = forms.CharField(label='Brand',max_length=50)
+    model = forms.CharField(label='Model',max_length=50)
     type = forms.CharField(label='Type', max_length=50)
     date = forms.DateField(label='Date')
     invoice_image = forms.ImageField(label='Invoice Image')
     Warranty = forms.BooleanField()
+    duration_warranty = forms.IntegerField(label='Duration of Warranty')
+    Is_Alert_Needed = forms.BooleanField()
     Insurance = forms.BooleanField()
+    duration_insurance = forms.IntegerField(label='Duration of Insurance')
 
 

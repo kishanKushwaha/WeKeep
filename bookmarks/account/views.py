@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponse
 from django.contrib.auth import authenticate,login
 from .forms import LoginForm,UserRegistrationForm,add_new_items
 from django.contrib.auth.decorators import login_required
-
+from .models import product
 @login_required
 def dashboard(request):
     return render(request,'account/dashboard.html',{'section':'dashboard'})
@@ -45,7 +45,11 @@ def service(request):
     return render(request,'account/service.html')
 
 def items(request):
-    return render(request,'account/items.html')
+    productData = product.objects.all()
+    data = {
+        'productData': productData
+    }
+    return render(request, 'account/items.html', data)
 
 def service_personnel(request):
     return render(request,'account/service_personnel.html')
@@ -53,3 +57,38 @@ def service_personnel(request):
 def new_items(request):
     new_form = add_new_items()
     return render(request,'account/new_items.html', {'new_form':new_form})
+
+def saveproduct(request):
+
+    if request.method=="POST":
+        item_name=request.POST.get('item_name')
+        price=request.POST.get('price')
+        brand=request.POST.get('brand')
+        model=request.POST.get('model')
+        type=request.POST.get('type')
+        date=request.POST.get('date')
+        invoice_image=request.POST.get('invoice_image')
+
+        if request.POST.get('Warranty') =='on':
+            Warranty = True
+        else:
+            Warranty =False
+
+        duration_warranty=request.POST.get('duration_warranty')
+
+        if request.POST.get('Is_Alert_Needed') == 'on':
+            Is_Alert_Needed = True
+        else:
+            Is_Alert_Needed = False
+
+        if request.POST.get('Insurance') == 'on':
+            Insurance = True
+        else:
+            Insurance = False
+        duration_insurance=request.POST.get('duration_insurance')
+        en=product(item_name=item_name,price=price, brand=brand, model=model, type=type, date=date, invoice_image=invoice_image,
+                   Warranty=Warranty, duration_warranty=duration_warranty, Is_Alert_Needed=Is_Alert_Needed,
+                   Insurance=Insurance, duration_insurance=duration_insurance)
+        en.save()
+    return render(request, 'account/new_items.html')
+
